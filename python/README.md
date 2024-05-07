@@ -16,6 +16,11 @@ For GenAI
 - 숫자
   - 정수형(int), 실수형(float), 문자열(str), 불(bool)
 
+### 입력
+
+- input()을 사용
+- 어떤 값을 입력해도 전부 str(문자열) 취급
+
 ### 특이사항
 
 ##### VScode - Python Extension 구성 중 확인된 사항
