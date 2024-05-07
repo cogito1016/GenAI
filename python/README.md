@@ -11,6 +11,11 @@ For GenAI
 - version : Python 3.9.6
 - 가상환경 관리 도구 : venv
 
+### 자료형
+
+- 숫자
+  - 정수형(int), 실수형(float)
+
 ### 특이사항
 
 ##### VScode - Python Extension 구성 중 확인된 사항
