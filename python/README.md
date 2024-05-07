@@ -21,6 +21,12 @@ For GenAI
 - input()을 사용
 - 어떤 값을 입력해도 전부 str(문자열) 취급
 
+### 형변환
+
+- 문자열 > 정수 : int(val)
+- 문자열 > 실수 : float(val)
+- 숫자(정수,실수) > 문자열 : str(val)
+
 ### 특이사항
 
 ##### VScode - Python Extension 구성 중 확인된 사항
