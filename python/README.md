@@ -2,6 +2,8 @@
 
 For GenAI
 
+---
+
 ## Python
 
 ### 구성
@@ -9,8 +11,12 @@ For GenAI
 - version : Python 3.9.6
 - 가상환경 관리 도구 : venv
 
-- VScode - Python Extension 구성 중 확인된 사항
-  ![alt text](image.png)
+### 특이사항
+
+##### VScode - Python Extension 구성 중 확인된 사항
+
+![alt text](image.png)
+
 - venv, conda란?
 - 목적
   - 파이썬 가상환경을 관리하기위한 도구
