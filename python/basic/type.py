@@ -14,3 +14,13 @@ print(type(number_3)) # REUSLT : float
 number_4 = 7//2
 print(number_4) # REUSLT : 3
 print(type(number_4)) # REUSLT : int
+
+# 문자열
+state = "Hi"
+print(state) 
+print(type(state)) # RESULT : str
+
+# 불
+yn = True
+print(yn)
+print(type(yn))

@@ -14,7 +14,7 @@ For GenAI
 ### 자료형
 
 - 숫자
-  - 정수형(int), 실수형(float)
+  - 정수형(int), 실수형(float), 문자열(str), 불(bool)
 
 ### 특이사항
 
