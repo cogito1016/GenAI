@@ -29,6 +29,8 @@ For GenAI
 
 ### 특이사항
 
+##### 파이썬의 들여쓰기는 4번(=탭1번)
+
 ##### VScode - Python Extension 구성 중 확인된 사항
 
 ![alt text](image.png)

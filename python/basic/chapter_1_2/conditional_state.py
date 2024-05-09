@@ -11,3 +11,9 @@ print(False and False) #f
 print(True or True) #t
 print(True or False) #t
 print(False or False) #f
+
+
+# 파이썬 분기문
+
+if(1==1):
+    print("와 이것은 true인데요?")
