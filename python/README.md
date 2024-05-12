@@ -48,6 +48,21 @@ else:
 
 ```
 
+### List란?
+
+- 여러가지 타입을 저장할 수 있는 자료
+-
+
+```python
+array = [1,2,1.1,"안녕",True]
+print(array)
+print(type(array))
+
+##RESULT
+# [1, 2, 1.1, '안녕', True]
+# <class 'list'>
+```
+
 ### 특이사항
 
 ##### 파이썬의 들여쓰기는 4번(=탭1번)
