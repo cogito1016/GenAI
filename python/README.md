@@ -88,6 +88,13 @@ print(type(array))
   - for i in range(100):
   - for num in num_list:
   - for char in "안녕하세요":
+- 파이썬 전개연산자
+
+```python
+list = [1,2,3,5]
+*list = 1,2,3,4,5
+newt_list = [*list,6]
+```
 
 ### 특이사항
 
