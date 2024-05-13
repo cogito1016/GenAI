@@ -84,6 +84,10 @@ print(type(array))
     - 첫 번째로 발견되는 2 삭제 (2를 전부삭제하려면 반복문사용)
 - 리스트 요소 전부 삭제
   - list.clear()
+- 반복
+  - for i in range(100):
+  - for num in num_list:
+  - for char in "안녕하세요":
 
 ### 특이사항
 
