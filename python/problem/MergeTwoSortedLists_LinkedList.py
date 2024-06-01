@@ -13,44 +13,26 @@ class Solution(object):
         :type list2: Optional[ListNode]
         :rtype: Optional[ListNode]
         """
-        result = ListNode()
-        resultInner = result
-        while (list1 or list2):
-            if (not list2):
-                resultInner.next = ListNode(list1.val)
-                list1 = list1.next
-                resultInner = resultInner.next
-                continue
-            if (not list1):
-                resultInner.next = ListNode(list2.val)
-                list2 = list2.next
-                resultInner = resultInner.next
-                continue
+        dummy = ListNode()
+        current = dummy
 
+        while (list1 and list2):
             if (list1.val < list2.val):
-                resultInner.next = ListNode(list1.val)
+                current.next = list1
                 list1 = list1.next
-                resultInner = resultInner.next
-                continue
-            if (list2.val < list1.val):
-                resultInner.next = ListNode(list2.val)
+            else:
+                current.next = list2
                 list2 = list2.next
-                resultInner = resultInner.next
-                continue
-            if (list1.val == list2.val):
-                resultInner.next = ListNode(list1.val)
-                resultInner.next.next = ListNode(list2.val)
-                list1 = list1.next
-                list2 = list2.next
-                resultInner = resultInner.next.next
-                continue
+            current = current.next
 
-        if result.next:
-            result = result.next
-        else:
-            result = None
+        if (list1):
+            current.next = list1
+        elif (list2):
+            current.next = list2
 
-        return result
+        dummy = dummy.next
+
+        return dummy
 
 l1 = ListNode(1)
 l1.next = ListNode(2)
