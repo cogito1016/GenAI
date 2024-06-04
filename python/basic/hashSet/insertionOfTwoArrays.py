@@ -5,14 +5,14 @@ class Solution(object):
         :type nums2: List[int]
         :rtype: List[int]
         """
-        s = {*nums1}
+        s = set(nums1)
         result = set()
 
         for n in nums2:
             if n in s:
                 result.add(n)
 
-        return [*result]
+        return list(result)
 
 
 s = Solution()
