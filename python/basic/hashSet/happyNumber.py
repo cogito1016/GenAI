@@ -4,17 +4,18 @@ class Solution(object):
         :type n: int
         :rtype: bool
         """
-        while(n != 1):
-            if(n == 4):
-                return False
+        s = set()
 
-            strArr = list(str(n))
-            n=0
-            for s in strArr:
-                nTemp = int(s)
-                n += nTemp ** 2
-            print(n)
-        return True
+        while(n not in s):
+            if(n == 1):
+                return True
+            s.add(n)
+
+            nArr = list(str(n))
+            n = 0
+            for nTemp in nArr:
+                n += int(nTemp) ** 2
+        return False
 
 
 # num = 12345
