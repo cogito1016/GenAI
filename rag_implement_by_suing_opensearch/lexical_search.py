@@ -7,6 +7,8 @@
 # !pip install -q boto3
 # !pip install pandas
 
+######################################################
+
 # 사용할 데이터 파일을 읽어 판다스 데이터프레임으로 저장
 import pandas as pd
 import requests
@@ -136,3 +138,72 @@ aos_client.indices.refresh(index=index_name)
 count = aos_client.count(index=index_name)
 print(count)
 # {'count': 11713, '_shards': {'total': 1, 'successful': 1, 'skipped': 0, 'failed': 0}}
+
+######################################################
+
+#키워드 검색 결과 확인하기(렉시컬 탐색)
+def keyword_search(query_text):
+    query = {
+        "size": 10,
+        "query": {
+            "multi_match": {
+                "query": query_text,
+                "fields": ["plot"],
+            }
+        },
+    }
+
+    res = aos_client.search(index=index_name, body=query)
+
+    query_result = []
+    for hit in res["hits"]["hits"]:
+        row = [
+            hit["_score"],
+            hit["_source"]["title"],
+            hit["_source"]["plot"],
+            hit["_source"]["genre"],
+            hit["_source"]["rating"],
+            hit["_source"]["main_act"],
+        ]
+        query_result.append(row)
+
+    query_result_df = pd.DataFrame(
+        data=query_result,
+        columns=["_score", "title", "plot", "genre", "rating", "main_act"],
+    )
+    display(query_result_df)
+
+
+def keyword_search(query_text):
+    query = {
+        "size": 10,
+        "query": {
+            "multi_match": {
+                "query": query_text,
+                "fields": ["plot"],
+            }
+        },
+    }
+
+    res = aos_client.search(index=index_name, body=query)
+
+    query_result = []
+    for hit in res["hits"]["hits"]:
+        row = [
+            hit["_score"],
+            hit["_source"]["title"],
+            hit["_source"]["plot"],
+            hit["_source"]["genre"],
+            hit["_source"]["rating"],
+            hit["_source"]["main_act"],
+        ]
+        query_result.append(row)
+
+    query_result_df = pd.DataFrame(
+        data=query_result,
+        columns=["_score", "title", "plot", "genre", "rating", "main_act"],
+    )
+    display(query_result_df)
+
+#상위 10개 검색결과 확인
+keyword_search("지구의 영웅들이 힘을 합쳐 우주의 악당을 물리친다")
