@@ -36,3 +36,56 @@ def find_long_plot_items(df):
     return long_plot_items
 
 find_long_plot_items(df).count()
+
+#3.오픈서치 도메인에 연결
+def get_cfn_outputs(stackname, cfn):
+    outputs = {}
+    for output in cfn.describe_stacks(StackName=stackname)["Stacks"][0]["Outputs"]:
+        outputs[output["OutputKey"]] = output["OutputValue"]
+    return outputs
+
+import boto3, json
+
+
+region_name = "us-east-1"
+
+cfn = boto3.client("cloudformation", region_name)
+kms = boto3.client("secretsmanager", region_name)
+
+stackname = "opensearch-workshop"
+cfn_outputs = get_cfn_outputs(stackname, cfn)
+
+aos_credentials = json.loads(
+    kms.get_secret_value(SecretId=cfn_outputs["OpenSearchSecret"])["SecretString"]
+)
+
+aos_host = cfn_outputs["OpenSearchDomainEndpoint"]
+aos_host
+
+import boto3, json
+region_name = "us-west-2"
+
+cfn = boto3.client("cloudformation", region_name)
+kms = boto3.client("secretsmanager", region_name)
+
+stackname = "opensearch-workshop"
+cfn_outputs = get_cfn_outputs(stackname, cfn)
+
+aos_credentials = json.loads(
+    kms.get_secret_value(SecretId=cfn_outputs["OpenSearchSecret"])["SecretString"]
+)
+
+aos_host = cfn_outputs["OpenSearchDomainEndpoint"]
+aos_host
+
+from opensearchpy import OpenSearch, RequestsHttpConnection, AWSV4SignerAuth
+
+auth = (aos_credentials["username"], aos_credentials["password"])
+
+aos_client = OpenSearch(
+    hosts=[{"host": aos_host, "port": 443}],
+    http_auth=auth,
+    use_ssl=True,
+    verify_certs=True,
+    connection_class=RequestsHttpConnection,
+)
