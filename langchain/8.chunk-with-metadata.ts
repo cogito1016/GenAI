@@ -12,11 +12,16 @@ const loader = new TextLoader('./context-test.md')
 
 //문서 로드
 const docs = await loader.load();
+// console.log(docs)
 
 //문서 청크단위로 분활
-const splitter = new RecursiveCharacterTextSplitter({
+const splitter = RecursiveCharacterTextSplitter.fromLanguage('markdown',{
     chunkSize:1000,
     chunkOverlap:200,
 })
-const splittedDocs = await splitter.splitDocuments(docs)
-console.log(splittedDocs)
+
+const mdDOcs = await splitter.createDocuments(
+    [docs[0].pageContent],
+)
+
+console.log(mdDOcs)
