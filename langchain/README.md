@@ -226,6 +226,7 @@ for await (const chunk of stream) {
 - 각 단계가 명확히 분리되어 있어 가독성이 좋고 테스트와 디버깅이 용이하다는 장점이 있음
 
 # 랭체인 - 제미나이
+- 제미나이 임베딩 기본모델 : embedding-001
 ## googleGenerativeAIEmbeddings
   - 제공: @langchain/google-genai 패키지
   - API: Google AI (Gemini API 직접 사용)
