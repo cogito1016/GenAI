@@ -225,7 +225,7 @@ for await (const chunk of stream) {
 - 이는 함수형 프로그래밍의 파이프라인 패턴을 구현한 것    
 - 각 단계가 명확히 분리되어 있어 가독성이 좋고 테스트와 디버깅이 용이하다는 장점이 있음
 
-# 랭체인 - 제미나이
+# 랭체인 - 제미나이 임베딩
 - 제미나이 임베딩 기본모델 : embedding-001
 ## googleGenerativeAIEmbeddings
   - 제공: @langchain/google-genai 패키지
@@ -256,3 +256,7 @@ for await (const chunk of stream) {
       projectId: "your-project-id"
   });
 ```
+
+# 랭체인 - 임베딩
+pgVector에 임베딩 한 결과
+![img.png](img.png)
