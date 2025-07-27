@@ -9,6 +9,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@langchain/community": "^0.3.49",
     "@langchain/core": "^0.3.66",
     "@langchain/google-genai": "^0.2.15",
     "dotenv": "^17.2.0",
