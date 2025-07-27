@@ -224,3 +224,34 @@ for await (const chunk of stream) {
 - 선언형 방식의 핵심은 `.pipe()` 메서드를 통한 체인 연결이다
 - 이는 함수형 프로그래밍의 파이프라인 패턴을 구현한 것    
 - 각 단계가 명확히 분리되어 있어 가독성이 좋고 테스트와 디버깅이 용이하다는 장점이 있음
+
+# 랭체인 - 제미나이
+## googleGenerativeAIEmbeddings
+  - 제공: @langchain/google-genai 패키지
+  - API: Google AI (Gemini API 직접 사용)
+  - 용도: 텍스트 전용 임베딩
+  - 인증: GEMINI_API_KEY 사용
+  - 특징: 일반적인 텍스트 임베딩 생성
+## GoogleVertexAIMultimodalEmbeddings
+  - 제공: @langchain/community 패키지 (experimental)
+  - API: Google Cloud Vertex AI
+  - 용도: 멀티모달 임베딩 (텍스트 + 이미지)
+  - 인증: Google Cloud 인증 필요
+  - 특징:
+    - 텍스트와 이미지를 함께 임베딩 가능
+    - 실험적 기능
+    - 더 복잡한 설정 필요
+
+## 사용 예시 차이:
+```typescript
+  // GoogleGenerativeAIEmbeddings - 텍스트만
+  const embeddings = new GoogleGenerativeAIEmbeddings({
+      apiKey: process.env.GEMINI_API_KEY
+  });
+
+  // GoogleVertexAIMultimodalEmbeddings - 텍스트+이미지
+  const multimodalEmbeddings = new
+  GoogleVertexAIMultimodalEmbeddings({
+      projectId: "your-project-id"
+  });
+```
