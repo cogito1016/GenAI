@@ -35,7 +35,7 @@ const queryGen = perspectivePrompt.pipe(chattingModel).pipe((message)=>{
 //중복제거
 const retrievalChain = queryGen
     .pipe(retriever.batch.bind(retriever))
-    .pipe(reciprocalRankFusion)
+    .pipe((results) => reciprocalRankFusion(results, 60))
     .pipe((documentLists)=>{
         const dedupedDocs = {};
         documentLists.flat().forEach((doc)=>{
@@ -76,13 +76,20 @@ function reciprocalRankFusion(results,k=60){
             //문서가 아직 본 적 없으면 점수를 0으로초기화, 나중에사용하기위해 저장
             if(!(key in fusedScores)){
                 fusedScores[key]=0
-                documents[key]=0
+                documents[key]=doc
             }
             //RRF공식을 사용하여 문서의 점수 업데이트
             //1/(rank+k)
-            fusedScores[key] +=1/(rank+k)
+            fusedScores[key] += 1 / (rank + k)
         })
     })
+
+    console.log("스코어점수")
+    console.log("스코어점수:",
+        Object.values(fusedScores))
+    console.log('도큐먼츠')
+    console.log(documents)
+
     //결합된 점수에 따라 문서를 내림차순으로 정렬하여 최종 재정렬된 결과 가져오기
     // @ts-ignore
     const sorted = Object.entries(fusedScores).sort((a,b)=> b[1]-a[1]);
