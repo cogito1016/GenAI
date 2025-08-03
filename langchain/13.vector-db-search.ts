@@ -24,4 +24,4 @@ const db = await PGVectorStore.fromDocuments(docs,model,{
     }
 })
 
-console.log(await db.similaritySearch(' AI 민주화에 큰 기여를 한다고 평가받는 LLM모델은?',1))
+console.log(await db.similaritySearch(' AI 민주화에 큰 기여를 한다고 평가받는 LLM모델은?',4))
