@@ -2,6 +2,7 @@ import {ChatGoogleGenerativeAI} from "@langchain/google-genai";
 import {configDotenv} from "dotenv";
 import {Annotation, END, messagesStateReducer, START, StateGraph} from "@langchain/langgraph";
 import * as fs from "node:fs";
+import {HumanMessage} from "@langchain/core/messages";
 
 configDotenv()
 // const connectionString = 'postgresql://langchain:langchain@localhost:6024/langchain';
@@ -60,14 +61,21 @@ builder = builder.addNode('chatbot',chatbot)
  * 그래프를 컴파일해 invoke및 stream메서드를제공하는 Runnable객체로 전환한다.
  */
 builder = builder
-    .addEdge(START, 'chatbot')
-    .addEdge('chatbot',END)
+    .addEdge(START, "chatbot")
+    .addEdge("chatbot",END)
 let graph = builder.compile();
 
 /**
  * (선택) 랭그래프시각화
  */
-const image = await graph.getGraph().drawMermaidPng()
-const arrayBuffer = await image.arrayBuffer()
-const buffer = new Uint8Array(arrayBuffer)
-fs.writeFileSync('graph.png',buffer)
+// const image = await graph.getGraph().drawMermaidPng()
+// const arrayBuffer = await image.arrayBuffer()
+// const buffer = new Uint8Array(arrayBuffer)
+// fs.writeFileSync('graph.png',buffer)
+
+const input = {
+    messages:[new HumanMessage('안녕하세요!')]
+}
+for await (const chunk of await graph.stream(input)){
+    console.log(chunk)
+}
