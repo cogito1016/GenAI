@@ -12,8 +12,10 @@
     "@langchain/community": "^0.3.49",
     "@langchain/core": "^0.3.66",
     "@langchain/google-genai": "^0.2.15",
+    "@langchain/langgraph": "^0.4.3",
     "@langchain/textsplitters": "^0.1.0",
     "dotenv": "^16.4.5",
+    "fs": "^0.0.1-security",
     "langchain": "^0.3.30",
     "pg": "^8.16.3",
     "zod": "^3.25.76"
